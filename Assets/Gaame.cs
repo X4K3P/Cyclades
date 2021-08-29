@@ -15,7 +15,8 @@ public class Gaame : MonoBehaviour, IPunObservable
         IsMasterHere = GameObject.FindGameObjectWithTag("Player");
         if (IsMasterHere == gameObject)
         {
-            IsMaster = true; }
+            IsMaster = true; 
+        }
         if (IsMaster == true)
         {
             test = UnityEngine.Random.Range(1, 100);
@@ -25,19 +26,13 @@ public class Gaame : MonoBehaviour, IPunObservable
     {
         if (stream.IsWriting&&IsMaster==true)
         {
-
-
-          
-                stream.SendNext(test);
-                UnityEngine.Debug.Log("Отправка");
-            
+            stream.SendNext(test);
+            UnityEngine.Debug.Log("Отправка");
         }
         else if (stream.IsReading&&IsMaster==false)
         {
-           
-                UnityEngine.Debug.Log("прием");
-                test = (int)stream.ReceiveNext();
-            
+            UnityEngine.Debug.Log("прием");
+            test = (int)stream.ReceiveNext();
         }
     }
 
